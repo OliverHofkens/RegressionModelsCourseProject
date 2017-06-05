@@ -1,0 +1,31 @@
+---
+title: "Motor Trend - Regression Models Project"
+author: "Oliver Hofkens"
+date: "5 June 2017"
+output: html_document
+---
+## Exploratory Analysis
+
+Load the data and check the format:
+```{r}
+data(mtcars)
+?mtcars
+str(mtcars)
+```
+
+We'll need mpg as a numeric (outcome) and automatic vs manual transmission as a factor (1=manual, 0=automatic).
+
+```{r}
+mtcars$am <- factor(mtcars$am, labels=c('automatic', 'manual'))
+table(mtcars$am) 
+```
+
+Let's look at a basic plot comparing mpg between automatic and manual cars.
+
+```{r}
+library(ggplot2)
+
+g <- ggplot(aes(x = am, y = mpg), data = mtcars) +
+    geom_boxplot()
+g
+```
